@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
-
+import '@fontsource/open-sans';
 import './index.css';
 
 ReactDOM.render(

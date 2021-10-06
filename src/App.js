@@ -1,11 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
-function App() {
-  return (
-    <div className="App">
-      Start here.
-    </div>
-  );
-}
+import { fetchMovies } from './api';
+
+const App = () => {
+  return <div className="font-body">Hello, world!</div>;
+};
 
 export default App;
