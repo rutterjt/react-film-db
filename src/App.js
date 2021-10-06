@@ -1,9 +1,18 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 
-import { fetchMovies } from './api';
+// components
+import Header from './components/Header';
+
+// Pages
+import Home from './components/Home';
 
 const App = () => {
-  return <div className="font-body">Hello, world!</div>;
+  return (
+    <div className="font-body">
+      <Header />
+      <Home />
+    </div>
+  );
 };
 
 export default App;
