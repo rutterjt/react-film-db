@@ -4,9 +4,6 @@ const API_URL = 'https://api.themoviedb.org/3/';
 const API_KEY = process.env.API_KEY;
 
 exports.handler = async (event, context) => {
-  console.log(event);
-  console.log(context);
-
   const { movieId } = event.queryStringParameters;
 
   const endpoint = `${API_URL}movie/${movieId}?api_key=${API_KEY}`;

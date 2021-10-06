@@ -7,9 +7,6 @@ const SEARCH_BASE_URL = `${API_URL}search/movie?api_key=${API_KEY}&language=en-U
 const POPULAR_BASE_URL = `${API_URL}movie/popular?api_key=${API_KEY}&language=en-US`;
 
 exports.handler = async (event, context) => {
-  console.log(event);
-  console.log(context);
-
   const { term, page } = event.queryStringParameters;
 
   const endpoint = term
