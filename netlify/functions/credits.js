@@ -18,7 +18,7 @@ exports.handler = async (event, context) => {
     console.log(err);
     return {
       statusCode: 404,
-      body: err.toString(),
+      body: JSON.stringify(err.toString()),
     };
   }
 };
