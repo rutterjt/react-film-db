@@ -1,6 +1,6 @@
 const BASE_URL = '/.netlify/functions/';
 
-export const fetchMovies = async (term, page) => {
+export const fetchMovies = async (page, term = '') => {
   const params = term ? `?term=${term}&page=${page}` : `?page=${page}`;
   const endpoint = BASE_URL + 'movies' + params;
   return await (await fetch(endpoint)).json();
