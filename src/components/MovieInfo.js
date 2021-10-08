@@ -24,8 +24,11 @@ const MovieInfo = ({ movie }) => {
   }
 
   return (
-    <div className="movie-backdrop px-5 py-10" style={wrapperStyle}>
-      <div className="movie-backdrop-overlay block max-w-screen-xl mx-auto rounded-2xl md:flex text-white">
+    <div
+      className="transition-all movie-backdrop px-5 py-10"
+      style={wrapperStyle}
+    >
+      <div className="transition-all movie-backdrop-overlay block max-w-screen-xl mx-auto rounded-2xl md:flex text-white">
         <Thumb
           image={
             movie.poster_path
@@ -43,13 +46,13 @@ const MovieInfo = ({ movie }) => {
           </section>
           <div className="flex justify-start">
             <section>
-              <h2 className="mb-2">Rating</h2>
+              <h2 className="mb-2 font-bold">Rating</h2>
               <div className="flex items-center justify-center w-9 h-9 bg-white text-gray-900 font-bold rounded-full">
                 {movie.vote_average}
               </div>
             </section>
             <section className="ml-10">
-              <h2 className="mb-2">
+              <h2 className="mb-2 font-bold">
                 Director{movie.directors.length > 1 ? 's' : ''}
               </h2>
               {movie.directors.map((director) => (
