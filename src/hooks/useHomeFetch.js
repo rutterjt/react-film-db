@@ -15,6 +15,7 @@ export const useHomeFetch = () => {
   const [error, setError] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
   const [isLoadingMore, setIsLoadingMore] = useState(false);
+  const [initialLoad, setInitialLoad] = useState(true);
 
   const getMovies = async (page, term = '') => {
     try {
@@ -31,6 +32,7 @@ export const useHomeFetch = () => {
       console.log(error);
       setError(true);
     }
+    if (initialLoad) setInitialLoad(false);
     setLoading(false);
   };
 
@@ -47,5 +49,14 @@ export const useHomeFetch = () => {
     setIsLoadingMore(false);
   }, [isLoadingMore, searchTerm, state.page]);
 
-  return { state, loading, error, searchTerm, setSearchTerm, setIsLoadingMore };
+  return {
+    state,
+    loading,
+    error,
+    searchTerm,
+    setSearchTerm,
+    setIsLoadingMore,
+    isLoadingMore,
+    initialLoad,
+  };
 };
