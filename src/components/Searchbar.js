@@ -20,15 +20,15 @@ const Searchbar = ({ setSearchTerm }) => {
 
   return (
     <div className="bg-gradient-to-br from-gray-900 to-gray-700 py-5 flex item-center h-24 px-5">
-      <div className="text-white relative max-w-screen-xl w-full h-14 mx-auto bg-gray-700 rounded-full">
-        <FaSearch className="absolute left-4 top-4 text-2xl" />
+      <div className="text-white relative max-w-screen-xl w-full h-full mx-auto bg-gray-700 rounded-full">
         <input
-          className="bg-transparent text-2xl absolute left-0 px-16 w-full outline-none h-10 my-2"
+          className="block h-full bg-transparent text-xl absolute left-0 px-16 w-full outline-none rounded-full focus:ring-2 focus:ring-gray-400"
           type="text"
           placeholder="Search"
           onChange={(e) => setState(e.currentTarget.value)}
           value={state}
         />
+        <FaSearch className="absolute left-4 top-4 text-2xl" />
       </div>
     </div>
   );
