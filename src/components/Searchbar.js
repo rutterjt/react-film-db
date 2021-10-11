@@ -4,7 +4,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { FaSearch } from 'react-icons/fa';
 
 const Searchbar = ({ setSearchTerm }) => {
-  const [state, setState] = useState('');
+  const [input, setInput] = useState('');
   const initial = useRef(true);
 
   useEffect(() => {
@@ -13,10 +13,10 @@ const Searchbar = ({ setSearchTerm }) => {
       return;
     }
     const timeout = setTimeout(() => {
-      setSearchTerm(state);
+      setSearchTerm(input);
     }, 500);
     return () => clearTimeout(timeout);
-  }, [setSearchTerm, state]);
+  }, [setSearchTerm, input]);
 
   const handle = (setter) => (e) => setter(e.currentTarget.value);
 
@@ -27,8 +27,8 @@ const Searchbar = ({ setSearchTerm }) => {
           className="block h-full bg-transparent text-xl absolute left-0 px-16 w-full outline-none rounded-full focus:ring-2 focus:ring-gray-400"
           type="text"
           placeholder="Search for movies"
-          onChange={handle(setState)}
-          value={state}
+          onChange={handle(setInput)}
+          value={input}
         />
         <FaSearch className="absolute left-4 top-4 text-2xl" />
       </div>
