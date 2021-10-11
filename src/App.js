@@ -4,6 +4,7 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 // components
+import ScrollToTop from './components/ScrollToTop';
 import Header from './components/Header';
 
 // Pages
@@ -14,6 +15,7 @@ import NotFound from './components/NotFound';
 const App = () => (
   <div className="font-body">
     <Router>
+      <ScrollToTop />
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
