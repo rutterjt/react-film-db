@@ -1,5 +1,7 @@
 import React from 'react';
 
+import styled from 'styled-components';
+
 // config
 import { IMAGE_BASE_URL, BACKDROP_SIZE, POSTER_SIZE } from '../config';
 
@@ -9,26 +11,80 @@ import Thumb from './Thumb';
 // fallback image
 import NoImage from '../images/no_image.jpg';
 
-const MovieInfo = ({ movie }) => {
-  const src = `${IMAGE_BASE_URL}${BACKDROP_SIZE}${movie.backdrop_path}`;
-  let wrapperStyle;
+const Wrapper = styled.div`
+  background: ${({ backdrop }) =>
+    backdrop ? `url(${IMAGE_BASE_URL}${BACKDROP_SIZE}${backdrop})` : '#000'};
+  background-size: cover;
+  background-position: center;
+  padding: 40px 20px;
+  animation: animateMovieInfo 1s;
+  @keyframes animateMovieInfo {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+`;
 
-  if (movie.backdrop_path) {
-    wrapperStyle = {
-      backgroundImage: `url("${src}")`,
-    };
-  } else {
-    wrapperStyle = {
-      backgroundColor: '#111928',
-    };
+const Content = styled.div`
+  display: flex;
+  max-width: ${({ theme }) => theme.maxWidth};
+  margin: 0 auto;
+  background: rgba(0, 0, 0, 0.7);
+  border-radius: 20px;
+  @media screen and (max-width: ${({ theme }) => theme.breakpoint.md}) {
+    display: block;
+    max-height: none;
+  }
+`;
+
+const Body = styled.div`
+  width: 100%;
+  padding: 20px 40px;
+  color: #fff;
+  overflow: hidden;
+
+  & h1 {
+    font-size: 1.5rem;
+    @media screen and (min-width: ${({ theme }) => theme.breakpoint.md}) {
+      font-size: 2.5rem;
+    }
   }
 
+  & h2 {
+    margin-bottom: 0.5rem;
+  }
+`;
+
+const Details = styled.div`
+  display: flex;
+  justify-content: flex-start;
+  gap: 1rem;
+`;
+
+const Rating = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 35px;
+  height: 35px;
+  background: #fff;
+  color: #000;
+  font-weight: 800;
+  border-radius: 50%;
+  margin: 0;
+`;
+
+const Plot = styled.div`
+  margin-bottom: 1rem;
+`;
+
+const MovieInfo = ({ movie }) => {
   return (
-    <div
-      className="transition-all movie-backdrop px-5 py-10"
-      style={wrapperStyle}
-    >
-      <div className="transition-all movie-backdrop-overlay block max-w-screen-xl mx-auto rounded-2xl md:flex text-white">
+    <Wrapper backdrop={movie.backdrop_path}>
+      <Content>
         <Thumb
           image={
             movie.poster_path
@@ -38,31 +94,27 @@ const MovieInfo = ({ movie }) => {
           clickable={false}
           title={movie.title}
         />
-        <article className="text-white w-full px-10 py-5 overflow-hidden">
-          <h1 className="text-2xl md:text-3xl mb-4">{movie.title}</h1>
-          <section className="mb-4">
-            <h2 className="text-xl mb-2">Plot</h2>
+        <Body>
+          <h1>{movie.title}</h1>
+          <Plot>
+            <h2>Plot</h2>
             <p>{movie.overview}</p>
-          </section>
-          <div className="flex justify-start">
+          </Plot>
+          <Details>
             <section>
-              <h2 className="mb-2 font-bold">Rating</h2>
-              <div className="flex items-center justify-center w-9 h-9 bg-white text-gray-900 font-bold rounded-full">
-                {movie.vote_average}
-              </div>
+              <h2>Rating</h2>
+              <Rating>{movie.vote_average}</Rating>
             </section>
-            <section className="ml-10">
-              <h2 className="mb-2 font-bold">
-                Director{movie.directors.length > 1 ? 's' : ''}
-              </h2>
+            <section>
+              <h2>Director{movie.directors.length > 1 ? 's' : ''}</h2>
               {movie.directors.map((director) => (
                 <p key={director.credit_id}>{director.name}</p>
               ))}
             </section>
-          </div>
-        </article>
-      </div>
-    </div>
+          </Details>
+        </Body>
+      </Content>
+    </Wrapper>
   );
 };
 

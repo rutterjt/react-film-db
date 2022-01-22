@@ -1,13 +1,33 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+import styled, { keyframes } from 'styled-components';
+
+const animateThumb = keyframes`
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+`;
+
+const StyledImage = styled.img`
+  animation: ${animateThumb} 1s;
+  width: 100%;
+  max-width: 720px;
+  object-fit: cover;
+  border-radius: 20px;
+  &:hover {
+    opacity: ${(props) => (props.clickable ? '0.8' : '1')};
+  }
+`;
+
 const Image = ({ image, title, clickable }) => (
-  <img
+  <StyledImage
     src={image}
     alt={`Movie thumbnail${title ? ' for ' + title : ''}`}
-    className={`rounded-2xl transition-all max-w-screen-sm object-cover w-full thumb ${
-      clickable && 'hover:opacity-80'
-    }`}
+    clickable={clickable}
   />
 );
 
@@ -18,7 +38,7 @@ const Thumb = ({ image, movieId, clickable, title = '' }) => (
         <Image image={image} title={title} clickable={clickable} />
       </Link>
     ) : (
-      <Image image={image} title={title} clickable={clickable} />
+      <Image image={image} title={title} />
     )}
   </div>
 );
