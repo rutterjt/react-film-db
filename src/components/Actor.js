@@ -31,7 +31,7 @@ const Image = styled.img`
 `;
 
 const Actor = ({ name, character, imageUrl }) => (
-  <Wrapper className="h-auto bg-gray-800 p-2 rounded-2xl text-white text-center">
+  <Wrapper>
     <Image src={imageUrl || NoImage} alt={`Thumbnail of ${name}`} />
     <h3>{name}</h3>
     <p>{character}</p>
