@@ -1,26 +1,51 @@
 import React from 'react';
+import styled from 'styled-components';
 
 import Attribution from './Attribution';
 
+const Wrapper = styled.div`
+  background: ${({ theme }) => theme.gradient.header};
+  color: #fff;
+  padding: 2rem 1rem;
+`;
+
+const Content = styled.footer`
+  max-width: ${({ theme }) => theme.maxWidth};
+  margin: auto;
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoint.md}) {
+    display: flex;
+    justify-content: space-between;
+  }
+`;
+
+const Copyright = styled.div`
+  margin-right: 1rem;
+  margin-bottom: 1rem;
+
+  & a:hover {
+    text-decoration: underline;
+  }
+`;
+
 const Footer = () => {
   return (
-    <div className="bg-gradient-to-br from-gray-900 to-gray-700 text-white py-16 px-5">
-      <footer className="max-w-screen-xl mx-auto block md:flex justify-between">
-        <div className="mr-4 mb-4">
+    <Wrapper>
+      <Content>
+        <Copyright>
           Built by{' '}
           <a
             href="https://github.com/jonrutter"
             rel="noreferrer"
             target="_blank"
-            className="hover:underline"
           >
             Jon Rutter
           </a>
           . Copyright {new Date().getFullYear()}.
-        </div>
+        </Copyright>
         <Attribution />
-      </footer>
-    </div>
+      </Content>
+    </Wrapper>
   );
 };
 

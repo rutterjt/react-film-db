@@ -1,12 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
+
 import '@fontsource/open-sans';
-import './index.css';
+
+import App from './App';
+
+import CSSReset from './styles/globalStyles';
+import { GlobalThemeProvider } from './styles/theme';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <GlobalThemeProvider>
+      <CSSReset />
+      <App />
+    </GlobalThemeProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );

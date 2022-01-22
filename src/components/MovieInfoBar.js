@@ -1,22 +1,50 @@
 import React from 'react';
+import styled from 'styled-components';
 
 // helpers
 import { calcTime, convertMoney } from '../helpers';
 
-const Column = ({ children }) => (
-  <div className="flex items-center justify-center bg-gray-700 rounded-2xl flex-1 py-4 my-5 md:my-0">
-    <p>{children}</p>
-  </div>
-);
+const Wrapper = styled.div`
+  display: flex;
+  align-items: center;
+  min-height: 100px;
+  background-color: ${(props) => props.theme.color.gray[800]};
+  color: #fff;
+  padding: 0 1.5rem;
+`;
+
+const Content = styled.div`
+  max-width: ${({ theme }) => theme.maxWidth};
+  width: 100%;
+  margin: 0 auto;
+  @media screen and (min-width: ${(props) => props.theme.breakpoint.md}) {
+    display: flex;
+    gap: 20px;
+  }
+`;
+
+const Column = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: ${(props) => props.theme.color.gray[700]};
+  border-radius: 0.5rem;
+  flex: 1;
+  padding: 1rem 0;
+  margin: 1rem 0;
+  @media screen and (min-width: ${(props) => props.theme.breakpoint.md}) {
+    margin: 0;
+  }
+`;
 
 const MovieInfoBar = ({ time, budget, revenue }) => (
-  <div className="flex items-center min-h-100 bg-gray-800 text-white px-5">
-    <div className="block max-w-screen-xl w-full mx-auto md:space-x-5 md:flex">
+  <Wrapper>
+    <Content>
       <Column>Running time: {calcTime(time)}</Column>
       <Column>Budget: {convertMoney(budget)}</Column>
       <Column>Revenue: {convertMoney(revenue)}</Column>
-    </div>
-  </div>
+    </Content>
+  </Wrapper>
 );
 
 export default MovieInfoBar;

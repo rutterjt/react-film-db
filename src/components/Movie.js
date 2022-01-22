@@ -1,4 +1,5 @@
 import React from 'react';
+import styled from 'styled-components';
 
 // routing
 import { Link, useParams } from 'react-router-dom';
@@ -21,6 +22,20 @@ import { useMovieFetch } from '../hooks/useMovieFetch';
 // fallback image
 import NoProfileImage from '../images/no_profile_picture.png';
 
+const SpinnerWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  height: 100%;
+`;
+
+const UnderlineLink = styled(Link)`
+  &:hover {
+    text-decoration: underline;
+  }
+`;
+
 const Movie = () => {
   // getting movieId from route params
   const { movieId } = useParams();
@@ -30,18 +45,15 @@ const Movie = () => {
 
   if (loading)
     return (
-      <div className="min-h-screen flex justify-center items-center">
+      <SpinnerWrapper>
         <Spinner />
-      </div>
+      </SpinnerWrapper>
     );
   if (error)
     return (
       <div>
         Something went wrong. Please try going back to the{' '}
-        <Link to="/" className="underline">
-          home page
-        </Link>
-        .
+        <UnderlineLink to="/">home page</UnderlineLink>.
       </div>
     );
 
