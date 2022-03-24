@@ -8,9 +8,9 @@ import ScrollToTop from './components/ScrollToTop';
 import Header from './components/Header';
 
 // Pages
-import Home from './components/Home';
-import Movie from './components/Movie';
-import NotFound from './components/NotFound';
+import Home from './pages/Home';
+import Movie from './pages/Movie';
+import NotFound from './pages/NotFound';
 
 const App = () => (
   <Router>

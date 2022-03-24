@@ -8,19 +8,16 @@ import { Link, useParams } from 'react-router-dom';
 import { IMAGE_BASE_URL, POSTER_SIZE } from '../config';
 
 // components
-import Grid from './Grid';
-import Spinner from './Spinner';
-import BreadCrumb from './BreadCrumb';
-import MovieInfo from './MovieInfo';
-import MovieInfoBar from './MovieInfoBar';
-import Actor from './Actor';
-import Footer from './Footer';
+import Grid from '../components/Grid';
+import Spinner from '../components/Spinner';
+import BreadCrumb from '../components/BreadCrumb';
+import MovieInfo from '../components/MovieInfo';
+import MovieInfoBar from '../components/MovieInfoBar';
+import Actor from '../components/Actor';
+import Footer from '../components/Footer';
 
 // hook
 import { useMovieFetch } from '../hooks/useMovieFetch';
-
-// fallback image
-import NoProfileImage from '../images/no_profile_picture.png';
 
 const SpinnerWrapper = styled.div`
   display: flex;
@@ -67,7 +64,7 @@ const Movie = () => {
           budget={movie.budget}
           revenue={movie.revenue}
         />
-        <Grid header="Cast">
+        <Grid title="Cast">
           {movie.actors.map((actor) => (
             <Actor
               key={actor.credit_id}
@@ -76,7 +73,7 @@ const Movie = () => {
               imageUrl={
                 actor.profile_path
                   ? `${IMAGE_BASE_URL}${POSTER_SIZE}${actor.profile_path}`
-                  : NoProfileImage
+                  : null
               }
             />
           ))}

@@ -11,13 +11,13 @@ import NoImage from '../images/no_image.jpg';
 import { useHomeFetch } from '../hooks/useHomeFetch';
 
 // components
-import HeroImage from './HeroImage';
-import Grid from './Grid';
-import Thumb from './Thumb';
-import Spinner from './Spinner';
-import Searchbar from './Searchbar';
-import Button from './Button';
-import Footer from './Footer';
+import HeroImage from '../components/HeroImage';
+import Grid from '../components/Grid';
+import Thumb from '../components/Thumb';
+import Spinner from '../components/Spinner';
+import Searchbar from '../components/Searchbar';
+import Button from '../components/Button';
+import Footer from '../components/Footer';
 
 const SpinnerWrapper = styled.div`
   display: flex;
@@ -62,7 +62,7 @@ const Home = () => {
           />
         ) : null}
         <Searchbar setSearchTerm={setSearchTerm} />
-        <Grid header={searchTerm ? 'Search Results' : 'Popular Movies'}>
+        <Grid title={searchTerm ? 'Search Results' : 'Popular Movies'}>
           {movies.map((movie) => {
             return (
               <Thumb
@@ -79,10 +79,12 @@ const Home = () => {
             );
           })}
         </Grid>
-        {loading && <Spinner />}
-        {state.page < state.total_pages && !loading && (
-          <Button text="Load More" callback={() => setIsLoadingMore(true)} />
-        )}
+        <div className="mt-8 max-w-site-content mx-auto flex justify-center items-center">
+          {loading && <Spinner />}
+          {state.page < state.total_pages && !loading && (
+            <Button text="Load More" onClick={() => setIsLoadingMore(true)} />
+          )}
+        </div>
       </Wrapper>
       <Footer />
     </>
