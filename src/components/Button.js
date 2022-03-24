@@ -1,21 +1,12 @@
 import React from 'react';
-import styled from 'styled-components';
 
-const StyledButton = styled.button`
-  display: block;
-  background-color: ${({ theme }) => theme.color.gray[800]};
-  color: #fff;
-  padding: 1rem 2rem;
-  border-radius: 1rem;
-  margin: 1rem auto;
-  transition: opacity 0.3s;
-  &:hover {
-    opacity: 0.8;
-  }
-`;
-
-const Button = ({ text, callback }) => (
-  <StyledButton onClick={callback}>{text}</StyledButton>
+const Button = ({ text, onClick }) => (
+  <button
+    onClick={onClick}
+    className="inline-block bg-slate-700 text-slate-50 py-3 px-8 rounded-2xl hover:opacity-80 transition-opacity text-lg"
+  >
+    {text}
+  </button>
 );
 
 export default Button;

@@ -1,41 +1,18 @@
 import React from 'react';
 
-import styled from 'styled-components';
-
 // fallback image
-import NoImage from '../images/no_profile_picture.png';
-
-const Wrapper = styled.section`
-  color: #fff;
-  background: ${({ theme }) => theme.color.gray[800]};
-  border-radius: 20px;
-  padding: 5px;
-  text-align: center;
-
-  h3 {
-    margin: 10px 0 0 0;
-    font-weight: bold;
-    font-size: 1.25rem;
-  }
-  p {
-    margin: 5px 0;
-  }
-`;
-
-const Image = styled.img`
-  display: block;
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-  border-radius: 15px;
-`;
+import NoImage from '../images/no-avatar.png';
 
 const Actor = ({ name, character, imageUrl }) => (
-  <Wrapper className="h-auto bg-gray-800 p-2 rounded-2xl text-white text-center">
-    <Image src={imageUrl || NoImage} alt={`Thumbnail of ${name}`} />
-    <h3>{name}</h3>
-    <p>{character}</p>
-  </Wrapper>
+  <section className="bg-gradient-to-br from-slate-900 to-slate-800 rounded-2xl p-2 text-white text-center">
+    <img
+      src={imageUrl || NoImage}
+      alt={`Thumbnail of ${name}`}
+      className="block w-full h-52 object-cover rounded-2xl mb-4"
+    />
+    <h3 className="text-xl font-bold mb-2">{name}</h3>
+    <p className="text-base mb-2">{character}</p>
+  </section>
 );
 
 export default Actor;

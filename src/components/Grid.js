@@ -1,32 +1,15 @@
 import React from 'react';
 
-import styled from 'styled-components';
-
-const Wrapper = styled.div`
-  max-width: ${({ theme }) => theme.maxWidth};
-  margin: 0 auto;
-  padding: 0 20px;
-  font-size: 1.25rem;
-  h2 {
-    color: ${({ theme }) => theme.color.gray[700]};
-    margin-bottom: @media screen and (max-width: 768px) {
-      font-size: 2rem;
-    }
-  }
-`;
-
-const Content = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  grid-gap: 2rem;
-`;
-
-const Grid = ({ header, children }) => {
+const Grid = ({ title, children }) => {
   return (
-    <Wrapper>
-      <h2>{header}</h2>
-      <Content>{children}</Content>
-    </Wrapper>
+    <div className="px-6 py-8">
+      <div className="max-w-site-content mx-auto text-xl">
+        <h2 className="text-slate-900 mb-4 md:mb-8 text-3xl">{title}</h2>
+        <div className="grid grid-cols-[repeat(auto-fill,_minmax(200px,_1fr))] gap-6">
+          {children}
+        </div>
+      </div>
+    </div>
   );
 };
 

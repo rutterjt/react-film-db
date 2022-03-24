@@ -1,51 +1,13 @@
 import React, { useState, useEffect, useRef } from 'react';
 
-import styled from 'styled-components';
-
 // icon
 import { FaSearch } from 'react-icons/fa';
 
-const Wrapper = styled.div`
-  display: flex;
-  align-items: center;
-  height: 100px;
-  background: ${(props) => props.theme.gradient.searchBar};
-  padding: 0 20px;
-`;
-
-const Content = styled.div`
-  position: relative;
-  max-width: ${({ theme }) => theme.maxWidth};
-  width: 100%;
-  height: 55px;
-  background: ${(props) => props.theme.color.gray[700]};
-  margin: 0 auto;
-  border-radius: 40px;
-  color: #fff;
-`;
-
-const Input = styled.input`
-  font-size: var(--fontBig);
-  position: absolute;
-  left: 0;
-  margin: 8px 0;
-  padding: 0 0 0 60px;
-  border: 0;
-  width: 95%;
-  background: transparent;
-  height: 40px;
-  color: var(--white);
-  &:focus {
-    outline: none;
-  }
-`;
-
-const SearchIcon = styled(FaSearch)`
-  position: absolute;
-  top: 1.25rem;
-  left: 1.25rem;
-  font-size: 1.5;
-`;
+const Icon = React.memo(() => (
+  <div className="absolute top-0 bottom-0 left-6 flex flex-col justify-center -z-10">
+    <FaSearch className="block text-xl" aria-hidden="true" />
+  </div>
+));
 
 const Searchbar = ({ setSearchTerm }) => {
   const [input, setInput] = useState('');
@@ -65,17 +27,28 @@ const Searchbar = ({ setSearchTerm }) => {
   const handle = (setter) => (e) => setter(e.currentTarget.value);
 
   return (
-    <Wrapper>
-      <Content>
-        <Input
-          type="text"
-          placeholder="Search for movies"
-          onChange={handle(setInput)}
-          value={input}
-        />
-        <SearchIcon />
-      </Content>
-    </Wrapper>
+    <div className="bg-slate-700 text-slate-50 w-full px-6 py-8">
+      <div className="max-w-site-content mx-auto">
+        <div className="max-w-full rounded-full bg-slate-800 relative z-10 text-lg">
+          <input
+            id="search-input"
+            type="text"
+            onChange={handle(setInput)}
+            value={input || ''}
+            className="block w-full min-w-full h-full min-h-full py-4 pl-16 pr-2 bg-transparent rounded-full peer focus:outline-none focus:ring-2  focus:ring-slate-50 transition-all"
+          />
+          <label
+            htmlFor="search-input"
+            className={`leading-normal absolute top-4 left-16 search-input text-slate-300 -z-10 transition-all origin-left peer-focus:scale-75 peer-focus:-translate-y-6 ${
+              input ? 'scale-75 -translate-y-6' : ''
+            }`}
+          >
+            Search for movies
+          </label>
+          <Icon />
+        </div>
+      </div>
+    </div>
   );
 };
 
