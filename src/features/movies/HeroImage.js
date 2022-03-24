@@ -1,5 +1,10 @@
 import React from 'react';
 import styled, { keyframes } from 'styled-components';
+import { useSelector } from 'react-redux';
+
+import { IMAGE_BASE_URL, BACKDROP_SIZE } from '../../app/config';
+
+import { selectMovieById } from './moviesSlice';
 
 const animateHeroImage = keyframes`
     from {
@@ -51,13 +56,18 @@ const Text = styled.div`
   }
 `;
 
-const HeroImage = ({ image, title, text }) => {
+const HeroImage = ({ movieId }) => {
+  const movie = useSelector((state) => selectMovieById(state, movieId));
+  const { backdrop_path: backdrop, title, overview } = movie;
+
+  const image = `${IMAGE_BASE_URL}${BACKDROP_SIZE}${backdrop}`;
+
   return (
     <Wrapper image={image}>
       <Content>
         <Text>
           <h1>{title}</h1>
-          <p>{text}</p>
+          <p>{overview}</p>
         </Text>
       </Content>
     </Wrapper>

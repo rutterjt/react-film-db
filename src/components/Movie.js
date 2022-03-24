@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import { Link, useParams } from 'react-router-dom';
 
 // config
-import { IMAGE_BASE_URL, POSTER_SIZE } from '../config';
+import { IMAGE_BASE_URL, POSTER_SIZE } from '../app/config';
 
 // components
 import Grid from './Grid';
@@ -40,8 +40,6 @@ const Movie = () => {
   // getting movieId from route params
   const { movieId } = useParams();
   const { state: movie, loading, error } = useMovieFetch(movieId);
-
-  console.log(movie);
 
   if (loading)
     return (

@@ -3,7 +3,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 // config
-import { IMAGE_BASE_URL, BACKDROP_SIZE, POSTER_SIZE } from '../config';
+import { IMAGE_BASE_URL, BACKDROP_SIZE, POSTER_SIZE } from '../app/config';
 
 // components
 import Thumb from './Thumb';

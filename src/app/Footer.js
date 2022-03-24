@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import Attribution from './Attribution';
+import Attribution from '../components/Attribution';
 
 const Wrapper = styled.div`
   background: ${({ theme }) => theme.gradient.header};
