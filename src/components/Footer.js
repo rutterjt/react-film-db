@@ -1,51 +1,37 @@
 import React from 'react';
-import styled from 'styled-components';
 
-import Attribution from './Attribution';
-
-const Wrapper = styled.div`
-  background: ${({ theme }) => theme.gradient.header};
-  color: #fff;
-  padding: 2rem 1rem;
-`;
-
-const Content = styled.footer`
-  max-width: ${({ theme }) => theme.maxWidth};
-  margin: auto;
-
-  @media screen and (min-width: ${({ theme }) => theme.breakpoint.md}) {
-    display: flex;
-    justify-content: space-between;
-  }
-`;
-
-const Copyright = styled.div`
-  margin-right: 1rem;
-  margin-bottom: 1rem;
-
-  & a:hover {
-    text-decoration: underline;
-  }
-`;
+import TMDBLogo from '../images/tmdb_logo-full.svg';
 
 const Footer = () => {
+  const copyrightYear = new Date().getFullYear();
   return (
-    <Wrapper>
-      <Content>
-        <Copyright>
-          Built by{' '}
+    <footer className="bg-gradient-to-br from-slate-900 to-slate-800 text-slate-50 py-12 px-6 mt-8 md:mt-12">
+      <div className="max-w-site-content mx-auto flex flex-col items-center justify-between md:flex-row">
+        <div className="mr-4 mb-8 md:m-0">
+          Copyright {copyrightYear},{' '}
           <a
             href="https://github.com/jonrutter"
             rel="noreferrer"
             target="_blank"
+            className="hover:underline focus:underline"
           >
             Jon Rutter
           </a>
-          . Copyright {new Date().getFullYear()}.
-        </Copyright>
-        <Attribution />
-      </Content>
-    </Wrapper>
+          .
+        </div>
+        <div className="max-w-[300px] flex items-center">
+          <img
+            src={TMDBLogo}
+            alt="The Movie Database logo"
+            className="w-full max-w-[80px] h-auto mr-4 md:max-w-[100px]"
+          />
+          <p>
+            This website uses the TMDB API but is not endorsed or certified by
+            TMDB.
+          </p>
+        </div>
+      </div>
+    </footer>
   );
 };
 
