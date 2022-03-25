@@ -23,7 +23,7 @@ const FilmCard = ({ image, movieId, title }) => {
 
 FilmCard.propTypes = {
   image: PropTypes.string,
-  movieId: PropTypes.string,
+  movieId: PropTypes.number,
   title: PropTypes.string,
 };
 
