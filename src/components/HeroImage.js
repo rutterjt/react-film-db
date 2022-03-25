@@ -7,7 +7,7 @@ const HeroImage = ({ image, title, text }) => {
   return (
     <div
       style={{ background: bgStyle }}
-      className="relative h-[600px] from-transparent via-slate-900/30 to-slate-900 px-6 text-slate-50 animate-fadeIn"
+      className="relative min-h-[600px] from-transparent via-slate-900/30 to-slate-900 px-6 text-slate-50 animate-fadeIn"
     >
       <div className="max-w-site-content mx-auto">
         <div className="max-w-prose z-10 absolute bottom-10 mr-20 min-h-[100px]">
