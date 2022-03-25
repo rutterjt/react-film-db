@@ -10,6 +10,7 @@ import NoImage from '../images/no_image.jpg';
 import { useHomeFetch } from '../hooks/useHomeFetch';
 
 // components
+import Layout from '../components/Layout';
 import HeroImage from '../components/HeroImage';
 import Grid from '../components/Grid';
 import Spinner from '../components/Spinner';
@@ -38,7 +39,7 @@ const Home = () => {
     );
 
   return (
-    <main className="mb-2">
+    <Layout>
       {!searchTerm && movies[0] ? (
         <HeroImage
           image={`${IMAGE_BASE_URL}${BACKDROP_SIZE}${movies[0].backdrop_path}`}
@@ -69,7 +70,7 @@ const Home = () => {
           <Button text="Load More" onClick={() => setIsLoadingMore(true)} />
         )}
       </div>
-    </main>
+    </Layout>
   );
 };
 

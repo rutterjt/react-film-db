@@ -7,6 +7,7 @@ import { Link, useParams } from 'react-router-dom';
 import { IMAGE_BASE_URL, POSTER_SIZE } from '../api';
 
 // components
+import Layout from '../components/Layout';
 import Grid from '../components/Grid';
 import Spinner from '../components/Spinner';
 import BreadCrumb from '../components/BreadCrumb';
@@ -26,23 +27,27 @@ const Movie = () => {
 
   if (loading)
     return (
-      <div className="flex justify-center items-center min-h-screen h-full">
-        <Spinner />
-      </div>
+      <Layout>
+        <div className="flex justify-center items-center min-h-screen h-full">
+          <Spinner />
+        </div>
+      </Layout>
     );
   if (error)
     return (
-      <div>
-        Something went wrong. Please try going back to the{' '}
-        <Link to="/" className="hover:underline focus:underline">
-          home page
-        </Link>
-        .
-      </div>
+      <Layout>
+        <div>
+          Something went wrong. Please try going back to the{' '}
+          <Link to="/" className="hover:underline focus:underline">
+            home page
+          </Link>
+          .
+        </div>
+      </Layout>
     );
 
   return (
-    <main>
+    <Layout title={movie.title}>
       <BreadCrumb movieTitle={movie.title} />
       <MovieInfo movie={movie} />
       <MovieInfoBar
@@ -64,7 +69,7 @@ const Movie = () => {
           />
         ))}
       </Grid>
-    </main>
+    </Layout>
   );
 };
 

@@ -2,8 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 // logo
-import Logo from '../images/rfdb-logo.svg';
-import TMDBLogo from '../images/tmdb_logo.svg';
+import Logo from '../../images/rfdb-logo.svg';
+import TMDBLogo from '../../images/tmdb_logo.svg';
 
 const Header = () => (
   <header className="bg-gradient-to-br from-slate-900 to-slate-800 py-6 px-6 md:py-8">

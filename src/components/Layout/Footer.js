@@ -1,6 +1,6 @@
 import React from 'react';
 
-import TMDBLogo from '../images/tmdb_logo-full.svg';
+import TMDBLogo from '../../images/tmdb_logo-full.svg';
 
 const Footer = () => {
   const copyrightYear = new Date().getFullYear();
