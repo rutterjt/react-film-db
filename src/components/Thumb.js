@@ -1,46 +1,27 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
-import styled, { keyframes } from 'styled-components';
+const Thumb = ({ image, movieId, title }) => {
+  return (
+    <div>
+      <img
+        src={image}
+        title={title}
+        alt={`Movie thumbnail${title ? ' for ' + title : ''}`}
+        className={`animate-fadeIn w-full max-w-[720px] object-cover rounded-3xl`}
+      />
+    </div>
+  );
+};
 
-const animateThumb = keyframes`
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-`;
+Thumb.propTypes = {
+  image: PropTypes.string,
+  movieId: PropTypes.string,
+  title: PropTypes.string,
+};
 
-const StyledImage = styled.img`
-  animation: ${animateThumb} 1s;
-  width: 100%;
-  max-width: 720px;
-  object-fit: cover;
-  border-radius: 20px;
-  &:hover {
-    opacity: ${(props) => (props.clickable ? '0.8' : '1')};
-  }
-`;
-
-const Image = ({ image, title, clickable }) => (
-  <StyledImage
-    src={image}
-    alt={`Movie thumbnail${title ? ' for ' + title : ''}`}
-    clickable={clickable}
-  />
-);
-
-const Thumb = ({ image, movieId, clickable, title = '' }) => (
-  <div>
-    {clickable ? (
-      <Link to={`/${movieId}`}>
-        <Image image={image} title={title} clickable={clickable} />
-      </Link>
-    ) : (
-      <Image image={image} title={title} />
-    )}
-  </div>
-);
+Thumb.defaultProps = {
+  title: '',
+};
 
 export default Thumb;
