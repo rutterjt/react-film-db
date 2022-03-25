@@ -4,7 +4,7 @@ import React from 'react';
 import { Link, useParams } from 'react-router-dom';
 
 // config
-import { IMAGE_BASE_URL, POSTER_SIZE } from '../config';
+import { IMAGE_BASE_URL, POSTER_SIZE } from '../api';
 
 // components
 import Grid from '../components/Grid';

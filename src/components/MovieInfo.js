@@ -1,7 +1,7 @@
 import React from 'react';
 
 // config
-import { IMAGE_BASE_URL, BACKDROP_SIZE, POSTER_SIZE } from '../config';
+import { IMAGE_BASE_URL, BACKDROP_SIZE, POSTER_SIZE } from '../api';
 
 // components
 import Thumb from './Thumb';
