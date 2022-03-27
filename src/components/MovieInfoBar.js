@@ -4,14 +4,14 @@ import React from 'react';
 import { calcTime, convertMoney } from '../helpers';
 
 const Column = ({ children }) => (
-  <div className="flex items-center justify-center bg-gray-700 rounded-2xl flex-1 py-4 my-5 md:my-0">
-    <p>{children}</p>
+  <div className="w-full flex items-center justify-center bg-slate-700 rounded-xl px-6 py-4 my-4 md:m-0">
+    {children}
   </div>
 );
 
 const MovieInfoBar = ({ time, budget, revenue }) => (
-  <div className="flex items-center min-h-100 bg-gray-800 text-white px-5">
-    <div className="block max-w-screen-xl w-full mx-auto md:space-x-5 md:flex">
+  <div className="flex items-center bg-slate-800 text-slate-50 p-6">
+    <div className="max-w-site-content w-full mx-auto md:flex md:space-x-10">
       <Column>Running time: {calcTime(time)}</Column>
       <Column>Budget: {convertMoney(budget)}</Column>
       <Column>Revenue: {convertMoney(revenue)}</Column>

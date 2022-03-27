@@ -1,9 +1,9 @@
 import React from 'react';
 
-const Button = ({ text, callback }) => (
+const Button = ({ text, onClick }) => (
   <button
-    className="block bg-gray-800 w-1/4 min-w-200 text-white h-14 rounded-full text-xl mx-auto my-5 transition-all shadow-xl hover:opacity-80"
-    onClick={callback}
+    onClick={onClick}
+    className="inline-block bg-slate-700 text-slate-50 py-3 px-8 rounded-2xl hover:opacity-80 focus:opacity-80 transition-opacity text-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-white"
   >
     {text}
   </button>

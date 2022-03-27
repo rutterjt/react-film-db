@@ -1,26 +1,27 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
-const Image = ({ image, title, clickable }) => (
-  <img
-    src={image}
-    alt={`Movie thumbnail${title ? ' for ' + title : ''}`}
-    className={`rounded-2xl transition-all max-w-screen-sm object-cover w-full thumb ${
-      clickable && 'hover:opacity-80'
-    }`}
-  />
-);
+const Thumb = ({ image, movieId, title }) => {
+  return (
+    <div>
+      <img
+        src={image}
+        title={title}
+        alt={`Movie thumbnail${title ? ' for ' + title : ''}`}
+        className={`animate-fadeIn w-full max-w-[720px] object-cover rounded-3xl`}
+      />
+    </div>
+  );
+};
 
-const Thumb = ({ image, movieId, clickable, title = '' }) => (
-  <div>
-    {clickable ? (
-      <Link to={`/${movieId}`}>
-        <Image image={image} title={title} clickable={clickable} />
-      </Link>
-    ) : (
-      <Image image={image} title={title} clickable={clickable} />
-    )}
-  </div>
-);
+Thumb.propTypes = {
+  image: PropTypes.string,
+  movieId: PropTypes.string,
+  title: PropTypes.string,
+};
+
+Thumb.defaultProps = {
+  title: '',
+};
 
 export default Thumb;

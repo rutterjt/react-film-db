@@ -1,7 +1,7 @@
 import React from 'react';
 
 // config
-import { IMAGE_BASE_URL, BACKDROP_SIZE, POSTER_SIZE } from '../config';
+import { IMAGE_BASE_URL, BACKDROP_SIZE, POSTER_SIZE } from '../api';
 
 // components
 import Thumb from './Thumb';
@@ -10,49 +10,35 @@ import Thumb from './Thumb';
 import NoImage from '../images/no_image.jpg';
 
 const MovieInfo = ({ movie }) => {
-  const src = `${IMAGE_BASE_URL}${BACKDROP_SIZE}${movie.backdrop_path}`;
-  let wrapperStyle;
-
-  if (movie.backdrop_path) {
-    wrapperStyle = {
-      backgroundImage: `url("${src}")`,
-    };
-  } else {
-    wrapperStyle = {
-      backgroundColor: '#111928',
-    };
-  }
-
+  const bgStyle = movie.backdrop_path
+    ? `url(${IMAGE_BASE_URL}${BACKDROP_SIZE}${movie.backdrop_path}) center/cover`
+    : '#162032';
   return (
-    <div
-      className="transition-all movie-backdrop px-5 py-10"
-      style={wrapperStyle}
-    >
-      <div className="transition-all movie-backdrop-overlay block max-w-screen-xl mx-auto rounded-2xl md:flex text-white">
+    <div style={{ background: bgStyle }} className="py-10 px-6 animate-fadeIn">
+      <div className="block md:flex max-w-site-content mx-auto bg-slate-900/80 rounded-3xl">
         <Thumb
           image={
             movie.poster_path
               ? `${IMAGE_BASE_URL}${POSTER_SIZE}${movie.poster_path}`
               : NoImage
           }
-          clickable={false}
           title={movie.title}
         />
-        <article className="text-white w-full px-10 py-5 overflow-hidden">
+        <div className="w-full py-5 px-6 md:px-10 text-slate-50 overflow-hidden">
           <h1 className="text-2xl md:text-3xl mb-4">{movie.title}</h1>
-          <section className="mb-4">
-            <h2 className="text-xl mb-2">Plot</h2>
-            <p>{movie.overview}</p>
-          </section>
-          <div className="flex justify-start">
+          <div className="mb-4">
+            <h2 className="text-xl mb-2 font-bold">Plot</h2>
+            <p className="max-w-prose">{movie.overview}</p>
+          </div>
+          <div className="flex flex-start space-x-8">
             <section>
-              <h2 className="mb-2 font-bold">Rating</h2>
-              <div className="flex items-center justify-center w-9 h-9 bg-white text-gray-900 font-bold rounded-full">
+              <h2 className="text-lg mb-2">Rating</h2>
+              <div className="flex items-center justify-center w-9 h-9 rounded-full bg-slate-50 text-slate-900 font-extrabold">
                 {movie.vote_average}
               </div>
             </section>
-            <section className="ml-10">
-              <h2 className="mb-2 font-bold">
+            <section>
+              <h2 className="text-lg mb-2">
                 Director{movie.directors.length > 1 ? 's' : ''}
               </h2>
               {movie.directors.map((director) => (
@@ -60,7 +46,7 @@ const MovieInfo = ({ movie }) => {
               ))}
             </section>
           </div>
-        </article>
+        </div>
       </div>
     </div>
   );

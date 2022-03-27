@@ -3,8 +3,14 @@ import React, { useState, useEffect, useRef } from 'react';
 // icon
 import { FaSearch } from 'react-icons/fa';
 
+const Icon = React.memo(() => (
+  <div className="absolute top-0 bottom-0 left-6 flex flex-col justify-center -z-10">
+    <FaSearch className="block text-xl" aria-hidden="true" />
+  </div>
+));
+
 const Searchbar = ({ setSearchTerm }) => {
-  const [state, setState] = useState('');
+  const [input, setInput] = useState('');
   const initial = useRef(true);
 
   useEffect(() => {
@@ -13,22 +19,34 @@ const Searchbar = ({ setSearchTerm }) => {
       return;
     }
     const timeout = setTimeout(() => {
-      setSearchTerm(state);
+      setSearchTerm(input);
     }, 500);
     return () => clearTimeout(timeout);
-  }, [setSearchTerm, state]);
+  }, [setSearchTerm, input]);
+
+  const handle = (setter) => (e) => setter(e.currentTarget.value);
 
   return (
-    <div className="bg-gradient-to-br from-gray-900 to-gray-700 py-5 flex item-center h-24 px-5">
-      <div className="text-white relative max-w-screen-xl w-full h-14 mx-auto bg-gray-700 rounded-full">
-        <FaSearch className="absolute left-4 top-4 text-2xl" />
-        <input
-          className="bg-transparent text-2xl absolute left-0 px-16 w-full outline-none h-10 my-2"
-          type="text"
-          placeholder="Search"
-          onChange={(e) => setState(e.currentTarget.value)}
-          value={state}
-        />
+    <div className="bg-slate-700 text-slate-50 w-full px-6 py-8">
+      <div className="max-w-site-content mx-auto">
+        <div className="max-w-full rounded-full bg-slate-800 relative z-10 text-lg">
+          <input
+            id="search-input"
+            type="text"
+            onChange={handle(setInput)}
+            value={input || ''}
+            className="block w-full min-w-full h-full min-h-full py-4 pl-16 pr-2 bg-transparent rounded-full peer focus:outline-none focus:ring-2  focus:ring-slate-50 transition-all"
+          />
+          <label
+            htmlFor="search-input"
+            className={`leading-normal absolute top-4 left-16 search-input text-slate-300 -z-10 transition-all origin-left peer-focus:scale-75 peer-focus:-translate-y-6 ${
+              input ? 'scale-75 -translate-y-6' : ''
+            }`}
+          >
+            Search for movies
+          </label>
+          <Icon />
+        </div>
       </div>
     </div>
   );
