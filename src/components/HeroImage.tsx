@@ -1,7 +1,13 @@
 import React from 'react';
 
-const HeroImage = ({ image, title, text }) => {
-  const bgStyle = image
+type Props = {
+  image: string;
+  title: string;
+  text: string;
+};
+
+const HeroImage: React.FC<Props> = ({ image, title, text }) => {
+  const bgStyle: string = image
     ? `linear-gradient(to bottom, var(--tw-gradient-stops)), url(${image}) center/cover`
     : '#0f172a';
   return (

@@ -2,8 +2,8 @@ import React from 'react';
 
 import TMDBLogo from '../../images/tmdb_logo-full.svg';
 
-const Footer = () => {
-  const copyrightYear = new Date().getFullYear();
+const Footer: React.FC = () => {
+  const copyrightYear: number = new Date().getFullYear();
   return (
     <footer className="bg-gradient-to-br from-slate-900 to-slate-800 text-slate-50 py-12 px-6 mt-8 md:mt-12">
       <div className="max-w-site-content mx-auto flex flex-col items-center justify-between md:flex-row">

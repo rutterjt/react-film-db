@@ -18,10 +18,10 @@ import Actor from '../components/Actor';
 // hook
 import { useMovieFetch } from '../hooks/useMovieFetch';
 
-const Movie = () => {
+const Movie: React.FC = () => {
   // getting movieId from route params
   const { movieId } = useParams();
-  const { state: movie, loading, error } = useMovieFetch(movieId);
+  const { state: movie, loading, error } = useMovieFetch(movieId as string);
 
   console.log(movie);
 
@@ -64,7 +64,7 @@ const Movie = () => {
             imageUrl={
               actor.profile_path
                 ? `${IMAGE_BASE_URL}${POSTER_SIZE}${actor.profile_path}`
-                : null
+                : ''
             }
           />
         ))}

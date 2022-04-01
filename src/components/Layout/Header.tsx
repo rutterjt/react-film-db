@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import Logo from '../../images/rfdb-logo.svg';
 import TMDBLogo from '../../images/tmdb_logo.svg';
 
-const Header = () => (
+const Header: React.FC = () => (
   <header className="bg-gradient-to-br from-slate-900 to-slate-800 py-6 px-6 md:py-8">
     <div className="max-w-site-content mx-auto flex items-center justify-between">
       <Link to="/">

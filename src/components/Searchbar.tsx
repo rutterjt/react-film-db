@@ -9,7 +9,11 @@ const Icon = React.memo(() => (
   </div>
 ));
 
-const Searchbar = ({ setSearchTerm }) => {
+type Props = {
+  setSearchTerm: React.Dispatch<React.SetStateAction<string>>;
+};
+
+const Searchbar: React.FC<Props> = ({ setSearchTerm }) => {
   const [input, setInput] = useState('');
   const initial = useRef(true);
 
@@ -24,8 +28,6 @@ const Searchbar = ({ setSearchTerm }) => {
     return () => clearTimeout(timeout);
   }, [setSearchTerm, input]);
 
-  const handle = (setter) => (e) => setter(e.currentTarget.value);
-
   return (
     <div className="bg-slate-700 text-slate-50 w-full px-6 py-8">
       <div className="max-w-site-content mx-auto">
@@ -33,7 +35,7 @@ const Searchbar = ({ setSearchTerm }) => {
           <input
             id="search-input"
             type="text"
-            onChange={handle(setInput)}
+            onChange={(e) => setInput(e.currentTarget.value)}
             value={input || ''}
             className="block w-full min-w-full h-full min-h-full py-4 pl-16 pr-2 bg-transparent rounded-full peer focus:outline-none focus:ring-2  focus:ring-slate-50 transition-all"
           />

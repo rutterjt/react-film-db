@@ -18,7 +18,7 @@ import Searchbar from '../components/Searchbar';
 import Button from '../components/Button';
 import FilmCard from '../components/FilmCard';
 
-const Home = () => {
+const Home: React.FC = () => {
   const {
     state,
     loading,
@@ -39,7 +39,7 @@ const Home = () => {
     );
 
   return (
-    <Layout>
+    <Layout title="Home">
       {!searchTerm && movies[0] ? (
         <HeroImage
           image={`${IMAGE_BASE_URL}${BACKDROP_SIZE}${movies[0].backdrop_path}`}
@@ -58,7 +58,7 @@ const Home = () => {
                   ? IMAGE_BASE_URL + POSTER_SIZE + movie.poster_path
                   : NoImage
               }
-              movieId={movie.id}
+              movieId={movie.id.toString()}
               title={movie.title}
             />
           );
@@ -67,7 +67,7 @@ const Home = () => {
       <div className="mt-8 max-w-site-content mx-auto flex justify-center items-center">
         {loading && <Spinner />}
         {state.page < state.total_pages && !loading && (
-          <Button text="Load More" onClick={() => setIsLoadingMore(true)} />
+          <Button onClick={() => setIsLoadingMore(true)}>Load More</Button>
         )}
       </div>
     </Layout>
