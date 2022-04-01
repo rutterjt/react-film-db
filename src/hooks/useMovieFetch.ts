@@ -2,9 +2,7 @@ import { useState, useEffect } from 'react';
 
 import { fetchCredits, fetchMovie } from '../api';
 
-import { Movie, Cast, Crew } from '../types';
-
-export type MovieState = Movie & { actors: Cast[]; directors: Crew[] };
+import { MovieState } from '../types';
 
 export const useMovieFetch = (movieId: string) => {
   const [state, setState] = useState<MovieState>({} as MovieState);

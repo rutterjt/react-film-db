@@ -10,7 +10,7 @@ import Thumb from './Thumb';
 import NoImage from '../images/no_image.jpg';
 
 // types
-import { MovieState } from '../hooks/useMovieFetch';
+import { MovieState } from '../types';
 
 type Props = {
   movie: MovieState;

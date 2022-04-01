@@ -39,3 +39,5 @@ export type Credits = {
   cast: Cast[];
   crew: Crew[];
 };
+
+export type MovieState = Movie & { actors: Cast[]; directors: Crew[] };
