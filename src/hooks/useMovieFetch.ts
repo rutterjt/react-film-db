@@ -2,8 +2,12 @@ import { useState, useEffect } from 'react';
 
 import { fetchCredits, fetchMovie } from '../api';
 
-export const useMovieFetch = (movieId) => {
-  const [state, setState] = useState({});
+import { Movie, Cast, Crew } from '../types';
+
+export type MovieState = Movie & { actors: Cast[]; directors: Crew[] };
+
+export const useMovieFetch = (movieId: string) => {
+  const [state, setState] = useState<MovieState>({} as MovieState);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
 

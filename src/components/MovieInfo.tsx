@@ -9,7 +9,14 @@ import Thumb from './Thumb';
 // fallback image
 import NoImage from '../images/no_image.jpg';
 
-const MovieInfo = ({ movie }) => {
+// types
+import { MovieState } from '../hooks/useMovieFetch';
+
+type Props = {
+  movie: MovieState;
+};
+
+const MovieInfo: React.FC<Props> = ({ movie }) => {
   const bgStyle = movie.backdrop_path
     ? `url(${IMAGE_BASE_URL}${BACKDROP_SIZE}${movie.backdrop_path}) center/cover`
     : '#162032';

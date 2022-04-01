@@ -1,7 +1,11 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
-const Thumb = ({ image, movieId, title }) => {
+type Props = {
+  image: string;
+  title: string;
+};
+
+const Thumb: React.FC<Props> = ({ image, title }) => {
   return (
     <div>
       <img
@@ -12,16 +16,6 @@ const Thumb = ({ image, movieId, title }) => {
       />
     </div>
   );
-};
-
-Thumb.propTypes = {
-  image: PropTypes.string,
-  movieId: PropTypes.string,
-  title: PropTypes.string,
-};
-
-Thumb.defaultProps = {
-  title: '',
 };
 
 export default Thumb;

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 import Layout from '../components/Layout';
 
-const NotFound = () => (
+const NotFound: React.FC = () => (
   <Layout title="404">
     <div className="min-h-[60vh] py-12 px-6 max-w-site-content mx-auto">
       <div className="max-w-prose">

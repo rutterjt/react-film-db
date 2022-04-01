@@ -3,7 +3,13 @@ import React from 'react';
 // fallback image
 import NoImage from '../images/no-avatar.png';
 
-const Actor = ({ name, character, imageUrl }) => (
+type Props = {
+  name: string;
+  character: string;
+  imageUrl: string;
+};
+
+const Actor: React.FC<Props> = ({ name, character, imageUrl }) => (
   <section className="bg-gradient-to-br from-slate-900 to-slate-800 rounded-2xl p-2 text-white text-center">
     <img
       src={imageUrl || NoImage}

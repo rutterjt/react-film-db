@@ -14,7 +14,7 @@ import Home from './pages/Home';
 import Movie from './pages/Movie';
 import NotFound from './pages/NotFound';
 
-const App = () => (
+const App: React.FC = () => (
   <Router>
     <HelmetProvider>
       <ScrollToTop />
