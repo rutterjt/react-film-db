@@ -2,9 +2,9 @@
 
 ![Netlify Status](https://api.netlify.com/api/v1/badges/6a656174-7eb1-4a23-8622-8a55da564854/deploy-status)
 [![Live Demo](https://img.shields.io/badge/demo-online-green.svg)](https://rfdb.netlify.app/)
-[![Current Version](https://img.shields.io/badge/version-2.1.0-green.svg)](https://github.com/jonrutter/react-film-db)
-[![GitHub Stars](https://img.shields.io/github/stars/jonrutter/react-film-db.svg)](https://github.com/jonrutter/react-film-db/stargazers)
-[![GitHub Issues](https://img.shields.io/github/issues/jonrutter/react-film-db.svg)](https://github.com/jonrutter/react-film-db/issues)
+[![Current Version](https://img.shields.io/badge/version-2.1.0-green.svg)](https://github.com/rutterjt/react-film-db)
+[![GitHub Stars](https://img.shields.io/github/stars/rutterjt/react-film-db.svg)](https://github.com/rutterjt/react-film-db/stargazers)
+[![GitHub Issues](https://img.shields.io/github/issues/rutterjt/react-film-db.svg)](https://github.com/rutterjt/react-film-db/issues)
 
 A fast and easy-to-use film database web application.
 
@@ -44,9 +44,9 @@ Preview the live demo: [https://rfdb.netlify.app/](https://rfdb.netlify.app/)
 
 **Jon Rutter**
 
-- [GitHub Profile](https://www.github.com/jonrutter)
-- [Email](mailto:contact@jonrutter.com)
-- [Website](https://www.jonrutter.com)
+- [GitHub Profile](https://www.github.com/rutterjt)
+- [Email](mailto:contact@jonrutter.io)
+- [Website](https://www.jonrutter.io)
 
 ## License
 
